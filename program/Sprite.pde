@@ -1,5 +1,5 @@
 public class Sprite{
-  PImage img;
+PImage img;
 float center_x, center_y;
 float change_x, change_y;
 float w, h;
@@ -23,8 +23,18 @@ public void display(){
   image(img, center_x, center_y);
 }
 public void update(){
-center_x += change_x;
-center_y += change_y;
+//center_x += change_x;
+//center_y += change_y;
+movePlayer();
 }
-
+void movePlayer(){
+  if (key == 'w' || key == 'W') {
+    center_y += -10;}
+   if (key == 'd' || key == 'D') {
+    center_x += 10;}
+   if (key == 's' || key == 'S') {
+    center_y += 10;}
+   if (key == 'a' || key == 'A') {
+    center_x += -10;}
+}
 }
