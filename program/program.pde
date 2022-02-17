@@ -12,7 +12,7 @@ void setup(){
   
   size(3584, 240);
   imageMode(CENTER);
-  p = new Sprite("data/taffyta.png", 1.0);
+  p = new Sprite("data/taffyta.png", 0.4);
   p.change_x = 0;
   p.change_y = 0;
   platforms = new ArrayList<Sprite>();
