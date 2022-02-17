@@ -1,8 +1,9 @@
-public class Sprite{
-PImage img;
+ public class Sprite{
+  PImage img;
 float center_x, center_y;
 float change_x, change_y;
 float w, h;
+ 
 
 public Sprite(String filename, float scale, float x, float y){
  
@@ -23,18 +24,40 @@ public void display(){
   image(img, center_x, center_y);
 }
 public void update(){
-//center_x += change_x;
-//center_y += change_y;
-movePlayer();
+center_x += change_x;
+center_y += change_y;
 }
-void movePlayer(){
-  if (key == 'w' || key == 'W') {
-    center_y += -10;}
-   if (key == 'd' || key == 'D') {
-    center_x += 10;}
-   if (key == 's' || key == 'S') {
-    center_y += 10;}
-   if (key == 'a' || key == 'A') {
-    center_x += -10;}
+
+void setLeft(float left){
+  center_x = left + w/2;
 }
+
+float getLeft(){
+return center_x - w/2;
 }
+
+void setRight(float right){
+  center_x = right - w/2;
+}
+
+float getRight(){
+  return center_x + w/2;
+}
+
+void setTop(float top){
+  center_y = top + h/2;
+}
+
+float getTop(){
+  return center_y - h/2;
+}
+
+void setBottom(float bottom){
+  center_y = bottom - h/2;
+}
+
+float getBottom(){
+  return center_y + h/2;
+}
+
+ }
