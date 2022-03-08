@@ -3,7 +3,12 @@
 float center_x, center_y;
 float change_x, change_y;
 float w, h;
+
  
+
+
+int gemAmountInt = 0;
+  
 
 public Sprite(String filename, float scale, float x, float y){
  
@@ -14,13 +19,10 @@ public Sprite(String filename, float scale, float x, float y){
   center_y = y;
   change_x = 0;
   change_y = 0;
-  
 }
 
 public Sprite(String filename, float scale){
   this(filename, scale, 0, 0);
- // img.width = 50;
- // img.height = 50;
 }
 public void display(){
   image(img, center_x, center_y);
@@ -32,18 +34,24 @@ movePlayer();
 }
 void movePlayer(){
   if (key == 'w' || key == 'W') {
-    center_y += -13;}
+    center_y += -10;}
    if (key == 'd' || key == 'D') {
     center_x += 10;}
    if (key == 's' || key == 'S') {
-    center_y += 0;
-    center_x +=0;}
+    center_y += 10;}
    if (key == 'a' || key == 'A') {
     center_x += -10;}
 }
 
+
 void setLeft(float left){
   center_x = left + w/2;
+
+public void gemCollection(){
+  gemAmountInt++;
+}
+
+
 }
 
 float getLeft(){
