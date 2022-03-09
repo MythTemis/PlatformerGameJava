@@ -1,13 +1,21 @@
+import processing.sound.*;
+
 final static float MOVE_SPEED = 4;
 final static float SPRITE_SCALE = 50.0/128;
 final static float SPRITE_SIZE = 50;
 final static float GRAVITY = 1;
 final static float JUMP_SPEED = 14;
+final static float RIGHT_MARGIN = 400;
+final static float LEFT_MARGIN = 60;
+final static float VERTICAL_MARGIN = 40;
 
 //global variables
 Sprite p;
 PImage bckgrd, collision_tester;
 ArrayList<Sprite> platforms;
+float view_x = 0;
+float view_y = 0;
+SoundFile file;
 void setup(){
   
   size(3584, 240);
@@ -16,6 +24,10 @@ void setup(){
   p.change_x = 0;
   p.change_y = 0;
   platforms = new ArrayList<Sprite>();
+  
+  file = new SoundFile(this, "data/sugarrushWAV.wav");
+  file.play();
+  file.amp(.5);
   //collision_tester = loadImage("data/test.png");
   //Sprite ct = new Sprite("data/test.png", 1);
   //platforms.add(ct);
@@ -26,7 +38,7 @@ void setup(){
 void draw(){
   // To set the background you have to 1) make sure that the game window is the same
   // size as the image and 2) that the image is a png
-
+  scroll();
   p.update();
   PImage bgrdP;
   bgrdP = loadImage("data/marioRippoff.png");
@@ -151,4 +163,16 @@ public ArrayList<Sprite> checkCollisionList(Sprite s, ArrayList<Sprite> list) {
     collision_list.add(p);
   }
   return collision_list;
+}
+
+void scroll() {
+  float right_boundary = view_x + width - RIGHT_MARGIN;
+  if(p.getRight() > right_boundary){ view_x -= p.getRight() - right_boundary; }
+  float left_boundary = view_x + LEFT_MARGIN;
+  if(p.getLeft() < left_boundary){ view_x -= left_boundary - p.getLeft(); }
+  float bottom_boundary = view_y + height - VERTICAL_MARGIN;
+  if (p.getBottom() > bottom_boundary) { view_y += p.getBottom() - bottom_boundary;}
+  float top_boundary = view_y + VERTICAL_MARGIN;
+  if(p.getTop() < top_boundary){view_y -= top_boundary - p.getTop();}
+  translate(-view_x, -view_y);
 }
