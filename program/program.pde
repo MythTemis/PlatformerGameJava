@@ -20,7 +20,7 @@ void setup(){
   
   size(3584, 240);
   imageMode(CENTER);
-  p = new Sprite("data/taffyta.png", 0.4);
+  p = new Sprite("data/taffyta.png", 1);
   p.change_x = 0;
   p.change_y = 0;
   platforms = new ArrayList<Sprite>();
@@ -49,10 +49,6 @@ void draw(){
   for(Sprite s: platforms) 
   s.display();  
 }
-
-
-
-
 
 public void resolvePlatformCollisions(Sprite s, ArrayList<Sprite> walls){
   //Gravity
